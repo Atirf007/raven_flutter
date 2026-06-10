@@ -60,6 +60,8 @@ flutter_icons:
   android: true
   ios: true
   image_path: "assets/images/logoRaven.png"
+  adaptive_icon_background: "#9D00FF"
+  adaptive_icon_foreground: "assets/images/logoRaven_square.png"
   
 flutter:
 
@@ -74,6 +76,11 @@ flutter:
     - assets/images/instagramIcon.png
     - assets/images/youtubeIcon.png
     - assets/images/googleIcon.png
+    - assets/images/pedro_1x1.jpg
+    - assets/images/gustavo_1x1.jpg
+    - assets/images/ciro_1x1.jpg
+    - assets/images/gabriel_1x1.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -43,7 +43,6 @@ class Buscador {
     );
   }
 
-  // 3. DIÁLOGO REUTILIZÁVEL (Pode ser chamado na Home ou nas Configurações)
   static void exibirSeletor(BuildContext context, VoidCallback aoAtualizar) {
     showDialog(
       context: context,
@@ -55,7 +54,7 @@ class Buscador {
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           content: Column(
-            mainAxisSize: MainAxisSize.min, // Ocupa apenas o espaço necessário
+            mainAxisSize: MainAxisSize.min,
             children: [
               _itemBuscador(context, 'DuckDuckGo', '🦆 DuckDuckGo', aoAtualizar),
               _itemBuscador(context, 'Google', '🔍 Google', aoAtualizar),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_mobiletelas/screens/sobre.dart';
+import 'package:flutter_application_mobiletelas/screens/sobre_nos/sobre_nos_screen.dart';
 import '../core/busca.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -61,6 +62,19 @@ class _SettingsPageState extends State<SettingsPage> {
                 MaterialPageRoute(builder: (context) => Sobre()),
               );
             },
+            
+          ),
+           ListTile(
+            leading: Icon(Icons.group, color: Colors.deepPurple),
+            title: Text("Sobre nós", style: TextStyle(color: Colors.white)),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SobreNos()),
+              );
+            },
+            
           ),
         ],
       ),
