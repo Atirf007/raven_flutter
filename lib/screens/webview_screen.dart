@@ -1,5 +1,8 @@
+// lib/screens/webview_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import '../core/historico.dart'; // Importa o gestor de histórico
 
 class WebViewPage extends StatefulWidget {
   final String url;
@@ -21,14 +24,22 @@ class _WebViewPageState extends State<WebViewPage> {
     _controller = WebViewController()
       ..setJavaScriptMode(
         JavaScriptMode.unrestricted,
-      ) // aqui era setJavaScriptEnabled
+      )
       ..setNavigationDelegate(
         NavigationDelegate(
           onPageStarted: (_) => setState(() => _isLoading = true),
-          onPageFinished: (url) => setState(() {
-            _isLoading = false;
-            _currentUrl = url;
-          }),
+          onPageFinished: (url) async {
+            // Captura o título real da página web que acabou de carregar
+            String? tituloDaPagina = await _controller.getTitle();
+            
+            // Grava automaticamente no histórico dinâmico
+            HistoricoManager.adicionar(tituloDaPagina ?? '', url);
+
+            setState(() {
+              _isLoading = false;
+              _currentUrl = url;
+            });
+          },
         ),
       )
       ..loadRequest(Uri.parse(widget.url));
@@ -37,23 +48,35 @@ class _WebViewPageState extends State<WebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.black,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.white),
         title: Text(
           _currentUrl,
-          style: const TextStyle(fontSize: 12),
+          style: const TextStyle(fontSize: 12, color: Colors.white),
           overflow: TextOverflow.ellipsis,
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () => _controller.goBack(),
+            icon: const Icon(Icons.arrow_back_ios, color: Colors.white, size: 18),
+            onPressed: () async {
+              if (await _controller.canGoBack()) {
+                _controller.goBack();
+              }
+            },
           ),
           IconButton(
-            icon: const Icon(Icons.arrow_forward_ios),
-            onPressed: () => _controller.goForward(),
+            icon: const Icon(Icons.arrow_forward_ios, color: Colors.white, size: 18),
+            onPressed: () async {
+              if (await _controller.canGoForward()) {
+                _controller.goForward();
+              }
+            },
           ),
           IconButton(
-            icon: const Icon(Icons.refresh),
+            icon: const Icon(Icons.refresh, color: Colors.white),
             onPressed: () => _controller.reload(),
           ),
         ],
@@ -62,7 +85,10 @@ class _WebViewPageState extends State<WebViewPage> {
         children: [
           WebViewWidget(controller: _controller),
           if (_isLoading)
-            const LinearProgressIndicator(), // barrinha de carregamento no topo
+            const LinearProgressIndicator(
+              color: Colors.deepPurple,
+              backgroundColor: Colors.black,
+            ),
         ],
       ),
     );

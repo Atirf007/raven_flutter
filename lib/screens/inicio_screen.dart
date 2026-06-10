@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/menu_lateral.dart';
-import '../core/pesquisar_duckduckgo.dart';
+import '../widgets/menu_lateral_widget.dart';
+import '../core/busca.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -63,9 +63,10 @@ class _HomeState extends State<Home> {
                 controller: controladorBusca,
                 style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
-                  hintText: 'Pesquise ou digite aqui...',
-                  hintStyle:  TextStyle(color: Colors.grey),
-                  prefixIcon: Icon(Icons.search, color: Colors.grey),
+                  // ALTERAÇÃO AQUI: Mostra dinamicamente o nome do buscador configurado
+                  hintText: 'Pesquisar com ${Buscador.mecanismoAtual}...',
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  prefixIcon: const Icon(Icons.search, color: Colors.grey),
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.arrow_forward, color: Colors.grey),
                     onPressed: () {

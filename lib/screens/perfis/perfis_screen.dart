@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'perfil_padrao.dart';
-import 'perfil_livre.dart';
-import 'perfil_privado.dart';
-import 'perfil_editavel.dart';
+import 'perfil_padrao_screen.dart';
+import 'perfil_livre_screen.dart';
+import 'perfil_privado_screen.dart';
+import 'perfil_editavel_screen.dart';
 
 class Perfis extends StatefulWidget {
   const Perfis({super.key});

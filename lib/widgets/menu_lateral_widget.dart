@@ -1,32 +1,37 @@
-import 'package:flutter/material.dart';
-import '../screens/downloads_page.dart';
-import '../screens/vpn_page.dart';
-import '../screens/perfis/perfis.dart';
-import '../screens/settings_page.dart';
-import '../screens/historic_page.dart';
+  import 'package:flutter/material.dart';
+  import '../screens/downloads_screen.dart';
+  import '../screens/vpn_screen.dart';
+  import '../screens/perfis/perfis_screen.dart';
+  import '../screens/configuracoes_screen.dart';
+  import '../screens/historico_screen.dart';
 
-class MenuLateral extends StatelessWidget {
-  const MenuLateral({super.key});
+  class MenuLateral extends StatefulWidget {
+    const MenuLateral({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      backgroundColor: Colors.grey[900],
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(color: Colors.purple),
-            child: Text(
-              'Versão de testes',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+  State<MenuLateral> createState() => _MenuLateralState();
+}
+
+class _MenuLateralState extends State<MenuLateral> {
+    @override
+    Widget build(BuildContext context) {
+      return Drawer(
+        backgroundColor: Colors.grey[900],
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.purple),
+              child: Text(
+                'Versão de testes',
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
             ),
-          ),
-          ListTile(
-            leading: Icon(Icons.people, color: Colors.white),
-            title: Text('Perfis', style: TextStyle(color: Colors.white)),
-            onTap: () {
-              Navigator.pop(context);
+            ListTile(
+              leading: Icon(Icons.people, color: Colors.white),
+              title: Text('Perfis', style: TextStyle(color: Colors.white)),
+              onTap: () {
+                Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Perfis()),
@@ -63,7 +68,7 @@ class MenuLateral extends StatelessWidget {
               Navigator.push(          
                 context,
                 MaterialPageRoute(builder: (context) => SettingsPage()),
-              );
+              ).then((_) => setState(() {}));
             },
           ),
           ListTile(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_mobiletelas/screens/home.dart';
-import 'package:flutter_application_mobiletelas/usuario.dart';
+import 'package:flutter_application_mobiletelas/screens/inicio_screen.dart';
+import '../core/usuario.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

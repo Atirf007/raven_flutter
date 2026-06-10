@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_mobiletelas/screens/sobre.dart';
+import '../core/busca.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -28,7 +30,11 @@ class _SettingsPageState extends State<SettingsPage> {
           ListTile(
             leading: Icon(Icons.search, color: Colors.deepPurple),
             title: Text("Mecanismo de Busca", style: TextStyle(color: Colors.white)),
-            onTap: () {},
+            onTap: () {
+              Buscador.exibirSeletor(context, () {
+                setState(() {});
+              });
+            },
           ),
           ListTile(
             leading: Icon(Icons.shield, color: Colors.deepPurple),
@@ -48,7 +54,13 @@ class _SettingsPageState extends State<SettingsPage> {
           ListTile(
             leading: Icon(Icons.info, color: Colors.deepPurple),
             title: Text("Sobre o Raven", style: TextStyle(color: Colors.white)),
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Sobre()),
+              );
+            },
           ),
         ],
       ),
