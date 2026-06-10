@@ -18,24 +18,22 @@ class Sobre extends StatelessWidget {
               SizedBox(height: 35),
               Text("Raven Browser", style: TextStyle(fontSize: 40, color: Colors.white)),
               SizedBox(height: 50),
-              Text('O Raven Browser é um navegador de internet focado em privacidade, segurança e praticidade.' 
-              'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea' 
-              'commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla'
-              'pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim' 
-              'id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
+              Text('O Raven Browser é um navegador de internet focado em privacidade e segurança, porém não deixando'
+              'que esses aspectos impeçam o usuário de ter uma experiência prática e conveniente através de suas ferramentas.'
+              'de fácil utilização',
               textAlign: TextAlign.justify,
               style: TextStyle(fontSize: 15, color: Colors.white)),
               SizedBox(height: 50),
-              Text("Features: ", style: TextStyle(fontSize: 20, color: Colors.white)),
+              Text("Funcionalidades: ", style: TextStyle(fontSize: 20, color: Colors.white)),
               SizedBox(height: 15),
               Row(
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                  Text('\u2022 Perfis', style: TextStyle(fontSize: 15, color: Colors.white)),
-                  Text('\u2022 VPN', style: TextStyle(fontSize: 15, color: Colors.white)),
-                  Text('\u2022 Extensões', style: TextStyle(fontSize: 15, color: Colors.white)),
+                  Text('\u2022 Perfis para diferentes necessidades de navegação', style: TextStyle(fontSize: 15, color: Colors.white)),
+                  Text('\u2022 VPN com alteração de alcance', style: TextStyle(fontSize: 15, color: Colors.white)),
+                  Text('\u2022 Extensões de privacidade', style: TextStyle(fontSize: 15, color: Colors.white)),
                   Text('\u2022 Ferramentas anti-fingerprinting', style: TextStyle(fontSize: 15, color: Colors.white)),
                 ])
               ]),
