@@ -1,0 +1,105 @@
+import 'package:flutter/material.dart';
+import '../widgets/menu_lateral.dart';
+import '../core/pesquisar_duckduckgo.dart';
+
+class Home extends StatefulWidget {
+  const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int abasAbertas = 67;
+  TextEditingController controladorBusca = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      drawer: const MenuLateral(),
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.white),
+        actions: [
+          Center(
+            child: Container(
+              margin: const EdgeInsets.only(right: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.purple, width: 2),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Text(
+                '$abasAbertas',
+                style: const TextStyle(
+                  color: Colors.purple,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/logoRaven.png', width: 80, height: 80),
+            const SizedBox(height: 16),
+            const Text(
+              'Raven Browser',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 60),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: TextField(
+                controller: controladorBusca,
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  hintText: 'Pesquise ou digite aqui...',
+                  hintStyle:  TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(Icons.search, color: Colors.grey),
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.arrow_forward, color: Colors.grey),
+                    onPressed: () {
+                      Buscador.pesquisar(
+                        context: context,
+                        texto: controladorBusca.text,
+                        controlador: controladorBusca,
+                      );
+                    },
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[900],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.purple),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(
+                      color: Colors.purpleAccent,
+                      width: 2,
+                    ),
+                  ),
+                ),
+                onSubmitted: (texto) => Buscador.pesquisar(
+                  context: context,
+                  texto: texto,
+                  controlador: controladorBusca,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
