@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_mobiletelas/screens/cadastro.dart';
 import 'package:flutter_application_mobiletelas/screens/sobre.dart';
 import 'package:flutter_application_mobiletelas/screens/sobre_nos/sobre_nos_screen.dart';
 import '../core/busca.dart';
@@ -26,7 +27,13 @@ class _SettingsPageState extends State<SettingsPage> {
           ListTile(
             leading: Icon(Icons.person, color: Colors.deepPurple),
             title: Text("Minha Conta", style: TextStyle(color: Colors.white)),
-            onTap: () {},
+            onTap: () {
+               Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Cadastro()),
+              );
+            },
           ),
           ListTile(
             leading: Icon(Icons.search, color: Colors.deepPurple),
