@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_mobiletelas/screens/login.dart';
+import 'screens/login_screen.dart';
 
 
 void main() {
@@ -21,4 +21,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/menu_lateral_widget.dart';
-import '../core/busca.dart';
+import '../services/busca_service.dart';
+import '../services/historico_service.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,6 +13,15 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int abasAbertas = 67;
   TextEditingController controladorBusca = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    
+    HistoricoService.carregarHistorico().then((_) {
+      setState(() {}); 
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,13 +74,13 @@ class _HomeState extends State<Home> {
                 style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   // ALTERAÇÃO AQUI: Mostra dinamicamente o nome do buscador configurado
-                  hintText: 'Pesquisar com ${Buscador.mecanismoAtual}...',
+                  hintText: 'Pesquisar com ${BuscaService.mecanismoAtual}...',
                   hintStyle: const TextStyle(color: Colors.grey),
                   prefixIcon: const Icon(Icons.search, color: Colors.grey),
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.arrow_forward, color: Colors.grey),
                     onPressed: () {
-                      Buscador.pesquisar(
+                      BuscaService.pesquisar(
                         context: context,
                         texto: controladorBusca.text,
                         controlador: controladorBusca,
@@ -91,7 +101,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                onSubmitted: (texto) => Buscador.pesquisar(
+                onSubmitted: (texto) => BuscaService.pesquisar(
                   context: context,
                   texto: texto,
                   controlador: controladorBusca,

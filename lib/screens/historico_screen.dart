@@ -1,8 +1,8 @@
 // lib/screens/historico_screen.dart
 
 import 'package:flutter/material.dart';
-import '../core/historico.dart'; // Importa a lógica do histórico
-import 'webview_screen.dart';   // Importa para reabrir a página ao clicar
+import '../services/historico_service.dart';
+import 'webview_screen.dart';
 
 class HistoricPage extends StatefulWidget {
   const HistoricPage({super.key});
@@ -34,18 +34,18 @@ class _HistoricPageState extends State<HistoricPage> {
         iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           // Só mostra o botão de apagar tudo se houver itens no histórico
-          if (HistoricoManager.listaHistorico.isNotEmpty)
+          if (HistoricoService.listaHistorico.isNotEmpty)
             IconButton(
               icon: const Icon(Icons.delete_sweep, color: Colors.deepPurple),
               onPressed: () {
                 setState(() {
-                  HistoricoManager.limparTudo();
+                  HistoricoService.limparTudo();
                 });
               },
             )
         ],
       ),
-      body: HistoricoManager.listaHistorico.isEmpty
+      body: HistoricoService.listaHistorico.isEmpty
           ? const Center(
               child: Text(
                 "Nenhum histórico de navegação",
@@ -53,9 +53,9 @@ class _HistoricPageState extends State<HistoricPage> {
               ),
             )
           : ListView.builder(
-              itemCount: HistoricoManager.listaHistorico.length,
+              itemCount: HistoricoService.listaHistorico.length,
               itemBuilder: (context, index) {
-                final item = HistoricoManager.listaHistorico[index];
+                final item = HistoricoService.listaHistorico[index];
                 
                 return ListTile(
                   // Captura o logotipo (Favicon) dinamicamente usando a API do Google
@@ -85,7 +85,7 @@ class _HistoricPageState extends State<HistoricPage> {
                     onPressed: () {
                       // Remove o item selecionado e atualiza o ecrã
                       setState(() {
-                        HistoricoManager.remover(index);
+                        HistoricoService.remover(index);
                       });
                     },
                   ),

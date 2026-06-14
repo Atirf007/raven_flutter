@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/webview_screen.dart';
 
-class Buscador {
+class BuscaService {
 
   static String mecanismoAtual = 'DuckDuckGo';
 

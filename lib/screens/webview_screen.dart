@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import '../core/historico.dart'; // Importa o gestor de histórico
+import '../services/historico_service.dart';
 
 class WebViewPage extends StatefulWidget {
   final String url;
@@ -34,7 +34,7 @@ class _WebViewPageState extends State<WebViewPage> {
           
             String? tituloDaPagina = await _controller.getTitle();
             
-            HistoricoManager.adicionar(tituloDaPagina ?? '', url);
+            HistoricoService.adicionar(tituloDaPagina ?? '', url);
 
             setState(() {
               _isLoading = false;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_application_mobiletelas/screens/cadastro.dart';
-import 'package:flutter_application_mobiletelas/screens/sobre.dart';
-import 'package:flutter_application_mobiletelas/screens/sobre_nos/sobre_nos_screen.dart';
-import '../core/busca.dart';
+//import 'cadastro.dart';
+import 'sobre.dart';
+import 'sobre_nos/sobre_nos_screen.dart';
+import '../services/busca_service.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -39,7 +39,7 @@ class _SettingsPageState extends State<SettingsPage> {
             leading: Icon(Icons.search, color: Colors.deepPurple),
             title: Text("Mecanismo de Busca", style: TextStyle(color: Colors.white)),
             onTap: () {
-              Buscador.exibirSeletor(context, () {
+              BuscaService.exibirSeletor(context, () {
                 setState(() {});
               });
             },
