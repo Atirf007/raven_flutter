@@ -29,10 +29,10 @@ class _SettingsPageState extends State<SettingsPage> {
             title: Text("Minha Conta", style: TextStyle(color: Colors.white)),
             onTap: () {
                Navigator.pop(context);
-              Navigator.push(
+            /*  Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Cadastro()),
-              );
+              );*/
             },
           ),
           ListTile(
