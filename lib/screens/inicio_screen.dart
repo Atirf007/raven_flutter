@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/logoRaven.png', width: 80, height: 80),
+            Image.asset('assets/images/logoRaven_round.png', width: 80, height: 80),
             const SizedBox(height: 16),
             const Text(
               'Raven Browser',
@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 60),
+            const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: TextField(

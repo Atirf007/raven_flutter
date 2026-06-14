@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "387617249624",
+    "project_id": "ravenbrowser-53124",
+    "storage_bucket": "ravenbrowser-53124.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387617249624:android:1ffa25e0268214fcd5ad2d",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_mobiletelas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0b7Wym4rRWlTvLmXbRVJ8WnoU947zG8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

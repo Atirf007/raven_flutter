@@ -1,6 +1,7 @@
 // lib/screens/webview_screen.dart
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../core/historico.dart'; // Importa o gestor de histórico
 
@@ -20,6 +21,7 @@ class _WebViewPageState extends State<WebViewPage> {
   @override
   void initState() {
     super.initState();
+     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     _currentUrl = widget.url;
     _controller = WebViewController()
       ..setJavaScriptMode(
@@ -29,10 +31,9 @@ class _WebViewPageState extends State<WebViewPage> {
         NavigationDelegate(
           onPageStarted: (_) => setState(() => _isLoading = true),
           onPageFinished: (url) async {
-            // Captura o título real da página web que acabou de carregar
+          
             String? tituloDaPagina = await _controller.getTitle();
             
-            // Grava automaticamente no histórico dinâmico
             HistoricoManager.adicionar(tituloDaPagina ?? '', url);
 
             setState(() {
